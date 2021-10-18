@@ -49,7 +49,7 @@ public class PlayerMovement : MonoBehaviour
 
     private bool IsGrounded()
     {
-        return rb.velocity.y <= 0 && Physics.Raycast(transform.position, Vector3.down, cc.height / 2.0F + 0.05F);
+        return Physics.Raycast(transform.position, Vector3.down, cc.height / 2.0F + 0.05F);
     }
 
     public void SetPlayerType(PlayerType _type)
