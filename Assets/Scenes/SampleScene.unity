@@ -365,6 +365,22 @@ PrefabInstance:
       propertyPath: m_Name
       value: PlayerChum
       objectReference: {fileID: 0}
+    - target: {fileID: 1565173895855508758, guid: 40d3710132ef3d54a8e1262725ed605e, type: 3}
+      propertyPath: speed
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1565173895855508758, guid: 40d3710132ef3d54a8e1262725ed605e, type: 3}
+      propertyPath: jumpStrength
+      value: 40
+      objectReference: {fileID: 0}
+    - target: {fileID: 9197737675283406179, guid: 40d3710132ef3d54a8e1262725ed605e, type: 3}
+      propertyPath: m_Drag
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9197737675283406179, guid: 40d3710132ef3d54a8e1262725ed605e, type: 3}
+      propertyPath: m_Mass
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 9197737675283406179, guid: 40d3710132ef3d54a8e1262725ed605e, type: 3}
       propertyPath: m_Constraints
       value: 112
