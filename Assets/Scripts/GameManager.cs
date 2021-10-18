@@ -19,7 +19,7 @@ public class PlayerType
 }
 public class GameManager : MonoBehaviour
 {
-    [Header("Game Settings")]
+    [Header("Gamemode Settings")]
     public bool topDown;
 
     [Header("Player Settings")]

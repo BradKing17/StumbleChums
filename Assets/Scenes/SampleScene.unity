@@ -384,7 +384,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 790ce0263020c6041b2e909ef32d4bae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  topDown: 1
+  topDown: 0
   playerPrefab: {fileID: 1565173895855508757, guid: 40d3710132ef3d54a8e1262725ed605e, type: 3}
   playerTypes:
   - name: Blue

@@ -61,6 +61,9 @@ public class PlayerMovement : MonoBehaviour
     public void SetTopDown(bool _topDown)
     {
         isTopDown = _topDown;
+        rb.constraints = isTopDown ? 
+            RigidbodyConstraints.FreezeRotation:
+            RigidbodyConstraints.FreezeRotation | RigidbodyConstraints.FreezePositionZ ;
         if (_topDown)
         {
             spr.transform.Rotate(new Vector3(90, 0, 0));
