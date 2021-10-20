@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -22,6 +23,9 @@ public class GameManager : MonoBehaviour
     [Header("Gamemode Settings")]
     public bool topDown;
 
+    public bool doPlayersRespawn = true;
+    public float levelKillY = -6.0F;
+
     [Header("Player Settings")]
     public GameObject playerPrefab;
     public PlayerType[] playerTypes;
@@ -37,6 +41,22 @@ public class GameManager : MonoBehaviour
         if (topDown)
         {
             cameraManager.Rotate(new Vector3(90,0,0));
+        }
+    }
+
+    private void Update()
+    {
+        foreach (GameObject player in players)
+        {
+            if (player.activeSelf && player.transform.position.y < levelKillY)
+            {
+                if (doPlayersRespawn)
+                {
+                    player.transform.position = Vector3.zero;
+                    continue;
+                }
+                player.SetActive(false);
+            }
         }
     }
 
