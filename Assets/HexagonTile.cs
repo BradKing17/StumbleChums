@@ -6,11 +6,11 @@ using UnityEngine.UI;
 public class HexagonTile : MonoBehaviour
 {
 
-    float timer;
-    public Sprite secondState;
+    public float timer;
+    public GameObject secondState;
     public float timeTo2ndState;
     public float timeToDestroy;
-    bool startTimer;
+    public bool startTimer;
 
     // Start is called before the first frame update
     void Start()
@@ -26,7 +26,7 @@ public class HexagonTile : MonoBehaviour
             timer += Time.deltaTime;
             if (timer >= timeTo2ndState)
             {
-                GetComponent<SpriteRenderer>().sprite = secondState;
+                GetComponent<SpriteRenderer>().color = Color.white;
             }
 
             if (timer >= timeTo2ndState + timeToDestroy)
@@ -37,11 +37,20 @@ public class HexagonTile : MonoBehaviour
 
     }
 
-    void OnTriggerEnter(Collider other)
+    void OnTriggerStay(Collider other)
     {
         if (other.CompareTag("Player"))
         {
+            
             startTimer = true;
+        }
+    }
+
+    void OnTriggerExit(Collider other) 
+    {
+        if (other.CompareTag("Player") && timer < timeTo2ndState) 
+        {
+            startTimer = false;
         }
     }
 
