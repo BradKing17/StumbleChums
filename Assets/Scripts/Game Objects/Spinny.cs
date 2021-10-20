@@ -11,9 +11,10 @@ public class Spinny : MonoBehaviour
         public MeshRenderer part;
         public Material[] stages;
     }
-    public float rotationSpeed = 1.0F;
+    public AnimationCurve speedCurve;
     public SpinnerPart[] parts;
     private Rigidbody rb;
+    private float t;
 
     private void Awake()
     {
@@ -22,14 +23,16 @@ public class Spinny : MonoBehaviour
 
     private void Update()
     {
-        rb.angularVelocity = Vector3.up * rotationSpeed;
+        rb.angularVelocity = Vector3.up * speedCurve.Evaluate(t);
         float rot = transform.rotation.eulerAngles.y;
         float index = rot / 360.0F;
         foreach (SpinnerPart part in parts)
         {
             int num = part.stages.Length;
-            float normalized = ((rotationSpeed > 0 ? 1 : -1) * index);
+            float normalized = ((rb.angularVelocity.y > 0 ? 1 : -1) * index);
             part.part.material = part.stages[(uint) (normalized * num) % num];
         }
+
+        t += Time.deltaTime;
     }
 }
