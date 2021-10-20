@@ -98,7 +98,7 @@ GameObject:
   - component: {fileID: 1824527918816782911}
   m_Layer: 0
   m_Name: PlayerChum
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -144,7 +144,6 @@ MonoBehaviour:
   rb: {fileID: 9197737675283406179}
   cc: {fileID: -4659301630611060162}
   spr: {fileID: 1418502929}
-  jumpMarker: {fileID: 0}
 --- !u!54 &9197737675283406179
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -168,7 +167,7 @@ CapsuleCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1565173895855508757}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: 6f33296bf804fe449b649d976643be39, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
   m_Radius: 0.3
