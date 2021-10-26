@@ -13,6 +13,7 @@ public class TileManager : MonoBehaviour
     public float colourValue;
     public float colourChangeTime;
     public int pathIndex = 0;
+    public bool showPath;
     // Start is called before the first frame update
     void Start()
     {
@@ -29,6 +30,7 @@ public class TileManager : MonoBehaviour
                 tiles[i, j].GetComponent<TipToeTile>().x = i;
                 tiles[i, j].GetComponent<TipToeTile>().y = j;
                 tiles[i, j].GetComponent<TipToeTile>().tilePosition = "(" + i.ToString() + ", " + j.ToString() + ")";
+                tiles[i, j].GetComponent<TipToeTile>().showPath = showPath;
 
                 
             }
@@ -44,7 +46,7 @@ public class TileManager : MonoBehaviour
         }
 
         GameObject startTile = tiles[Random.Range(0, 6), 0];
-
+        startTile.GetComponent<TipToeTile>().isInPath = true;
         int x = startTile.GetComponent<TipToeTile>().x;
         int y = 0;
 

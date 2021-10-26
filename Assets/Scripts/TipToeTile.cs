@@ -27,6 +27,9 @@ public class TipToeTile : MonoBehaviour
     public int x;
     public int y;
 
+    [HideInInspector]
+    public bool showPath;
+
     bool playerOnTile;
     bool changeColour;
     GameObject childTile;
@@ -54,6 +57,14 @@ public class TipToeTile : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (showPath)
+        {
+            if (isInPath)
+            {
+                sr.color = Color.white;
+            }
+            
+        }
 
         if(changeColour)
         {
