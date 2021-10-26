@@ -18,17 +18,35 @@ public class PlayerMovement : MonoBehaviour
     public Rigidbody rb;
     public CapsuleCollider cc;
     public SpriteRenderer spr;
+    public SphereCollider grabRange;
+    public List<Collider> grabbables;
+    public SpringJoint joint;
 
     private Vector2 moveInput;
+    private float grabInput;
+    private bool grounded;
+    private bool canDive = true;
+    private bool canGrab = true;
+    
 
     void Update()
     {
-        bool grounded = IsGrounded();
+        grounded = IsGrounded();
         // Horizontal
         rb.AddForce(transform.right * (moveInput.x * (grounded ? moveSpeed : airSpeed)), ForceMode.Acceleration);
         if (isTopDown)
         {
             rb.AddForce(transform.forward * (moveInput.y * (grounded ? moveSpeed : airSpeed)), ForceMode.Acceleration);
+        }
+        Debug.Log(grabInput);
+        if(grabInput > 0)
+        {
+            joint.connectedBody = grabbables[0].gameObject.GetComponent<Rigidbody>();
+            joint.spring = 100;
+        }
+        else
+        {
+            joint.spring = 0;
         }
 
         spr.sprite = playerType.sprites.front;
@@ -79,8 +97,44 @@ public class PlayerMovement : MonoBehaviour
     {
         if (!isTopDown && _value.phase == InputActionPhase.Started && IsGrounded())
         {
+            canDive = true;
             rb.AddForce(Vector2.up * jumpStrength, ForceMode.VelocityChange);
         }
     }
 
+    public void Grab(InputAction.CallbackContext _value)
+    {
+       if(!grounded && canDive)
+        {
+            canDive = false;
+            rb.AddForce(Vector2.right * rb.velocity.x * (jumpStrength/2), ForceMode.VelocityChange);
+        }
+       else
+       {
+            grabInput = _value.ReadValue<float>();
+       }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("Player"))
+        {
+            if (this.gameObject != other.gameObject)
+            {
+                
+                grabbables.Add(other);
+            }
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.gameObject.CompareTag("Player"))
+        {
+            if (this.gameObject != other.gameObject)
+            {
+                grabbables.Remove(other);
+            }
+        };
+    }
 }
