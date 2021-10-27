@@ -37,21 +37,19 @@ public class HexagonTile : MonoBehaviour
 
     }
 
-    void OnTriggerStay(Collider other)
+    public void Colliding()
     {
-        if (other.CompareTag("Player"))
-        {
-            
-            startTimer = true;
-        }
+        startTimer = true;
     }
 
-    void OnTriggerExit(Collider other) 
+    public void ExitedCollider()
     {
-        if (other.CompareTag("Player") && timer < timeTo2ndState) 
+        if(timer < timeTo2ndState)
         {
             startTimer = false;
         }
     }
+
+
 
 }

@@ -339,7 +339,7 @@ MonoBehaviour:
   colourValue: 0.05
   colourChangeTime: 2
   pathIndex: 0
-  showPath: 1
+  showPath: 0
 --- !u!1 &1670406956
 GameObject:
   m_ObjectHideFlags: 0

@@ -90,9 +90,9 @@ public class TipToeTile : MonoBehaviour
     }
 
 
-    private void OnTriggerEnter(Collider other)
+    private void OnCollisionEnter(Collision other)
     {
-        if (other.CompareTag("Player")) 
+        if (other.gameObject.tag == "Player") 
         {
             if (!isInPath)
             {
@@ -110,9 +110,9 @@ public class TipToeTile : MonoBehaviour
         }
     }
 
-    private void OnTriggerExit(Collider other)
+    private void OnCollisionExit(Collision other)
     {
-        if (other.CompareTag("Player") && playerOnTile)
+        if (other.gameObject.tag == "Player" && playerOnTile)
         {
             changeColour = true;
             playerOnTile = false;
