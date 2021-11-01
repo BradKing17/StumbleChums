@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1410168044255344998}
   - component: {fileID: 2522391767479770045}
   - component: {fileID: 1479570990533751692}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: GameObject (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -68,7 +68,7 @@ GameObject:
   - component: {fileID: 9060475827974897597}
   - component: {fileID: 2743036880370013680}
   - component: {fileID: 3587560834734938773}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: GameObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -125,7 +125,7 @@ GameObject:
   - component: {fileID: 6101364441496683430}
   - component: {fileID: 6101364441496683433}
   - component: {fileID: 6101364441496683432}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Hexagon tile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -230,7 +230,7 @@ GameObject:
   - component: {fileID: 7081359706131375107}
   - component: {fileID: 5494476079772206438}
   - component: {fileID: 3946641573858522719}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: GameObject (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -286,7 +286,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3555901003943882112}
   - component: {fileID: 4269453875460080198}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Hexagon Flat-Top
   m_TagString: Untagged
   m_Icon: {fileID: 0}

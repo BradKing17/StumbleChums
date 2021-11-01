@@ -76,6 +76,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   topDown: 0
+  doPlayersRespawn: 1
+  levelKillY: -6
   playerPrefab: {fileID: 1565173895855508757, guid: 40d3710132ef3d54a8e1262725ed605e, type: 3}
   playerTypes:
   - name: Blue

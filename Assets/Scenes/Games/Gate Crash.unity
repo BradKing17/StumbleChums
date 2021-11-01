@@ -543,7 +543,7 @@ GameObject:
   - component: {fileID: 665737365}
   - component: {fileID: 665737364}
   - component: {fileID: 665737363}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Ground
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -640,7 +640,7 @@ GameObject:
   - component: {fileID: 737524666}
   m_Layer: 0
   m_Name: GAME MANAGER
-  m_TagString: Untagged
+  m_TagString: Game Manager
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -658,6 +658,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   topDown: 1
+  doPlayersRespawn: 1
+  levelKillY: -6
   playerPrefab: {fileID: 1565173895855508757, guid: 40d3710132ef3d54a8e1262725ed605e, type: 3}
   playerTypes:
   - name: Blue

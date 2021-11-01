@@ -352,7 +352,7 @@ GameObject:
   - component: {fileID: 665737365}
   - component: {fileID: 665737364}
   - component: {fileID: 665737363}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -451,7 +451,7 @@ GameObject:
   - component: {fileID: 841846537}
   m_Layer: 0
   m_Name: Spinner
-  m_TagString: Untagged
+  m_TagString: ragdoll
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -474,17 +474,17 @@ MonoBehaviour:
     - serializedVersion: 3
       time: 0
       value: 0
-      inSlope: 0.1
-      outSlope: 0.1
+      inSlope: 0.050262325
+      outSlope: 0.050262325
       tangentMode: 34
       weightedMode: 0
       inWeight: 0
       outWeight: 0.33333334
     - serializedVersion: 3
-      time: 30
-      value: 3
-      inSlope: 0.1
-      outSlope: 0.1
+      time: 30.125
+      value: 1.5141525
+      inSlope: 0.050262325
+      outSlope: 0.050262325
       tangentMode: 34
       weightedMode: 0
       inWeight: 0.33333334
@@ -568,7 +568,7 @@ GameObject:
   - component: {fileID: 1427329404}
   m_Layer: 0
   m_Name: Spinner (1)
-  m_TagString: Untagged
+  m_TagString: ragdoll
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -591,17 +591,17 @@ MonoBehaviour:
     - serializedVersion: 3
       time: 0
       value: 0
-      inSlope: 0.13333334
-      outSlope: 0.13333334
+      inSlope: 0.07563491
+      outSlope: 0.07563491
       tangentMode: 34
       weightedMode: 0
       inWeight: 0
       outWeight: 0.33333334
     - serializedVersion: 3
-      time: 30
-      value: 4
-      inSlope: 0.13333334
-      outSlope: 0.13333334
+      time: 30.15831
+      value: 2.281021
+      inSlope: 0.07563491
+      outSlope: 0.07563491
       tangentMode: 34
       weightedMode: 0
       inWeight: 0.33333334
@@ -685,7 +685,7 @@ GameObject:
   - component: {fileID: 1593625923}
   m_Layer: 0
   m_Name: Right
-  m_TagString: Untagged
+  m_TagString: ragdoll
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -779,7 +779,7 @@ GameObject:
   - component: {fileID: 1762801086}
   - component: {fileID: 1762801085}
   - component: {fileID: 1762801084}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Cube (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -877,7 +877,7 @@ GameObject:
   - component: {fileID: 1795480362}
   m_Layer: 0
   m_Name: Left
-  m_TagString: Untagged
+  m_TagString: ragdoll
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -973,7 +973,7 @@ GameObject:
   - component: {fileID: 1805863156}
   m_Layer: 0
   m_Name: Right
-  m_TagString: Untagged
+  m_TagString: ragdoll
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1069,7 +1069,7 @@ GameObject:
   - component: {fileID: 1962709309}
   m_Layer: 0
   m_Name: Left
-  m_TagString: Untagged
+  m_TagString: ragdoll
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1161,6 +1161,14 @@ PrefabInstance:
     - target: {fileID: 2645920886185182295, guid: 46e78a5ed9749a940800d8ddb7603e48, type: 3}
       propertyPath: m_Name
       value: GAME MANAGER
+      objectReference: {fileID: 0}
+    - target: {fileID: 2645920886185182295, guid: 46e78a5ed9749a940800d8ddb7603e48, type: 3}
+      propertyPath: m_TagString
+      value: Game Manager
+      objectReference: {fileID: 0}
+    - target: {fileID: 2645920886185182296, guid: 46e78a5ed9749a940800d8ddb7603e48, type: 3}
+      propertyPath: topDown
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2645920886185182296, guid: 46e78a5ed9749a940800d8ddb7603e48, type: 3}
       propertyPath: cameraManager
