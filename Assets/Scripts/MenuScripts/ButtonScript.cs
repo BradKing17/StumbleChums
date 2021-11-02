@@ -19,11 +19,11 @@ public class ButtonScript : MonoBehaviour
     {
         if(EventSystem.current.currentSelectedGameObject == gameObject)
         {
-            GetComponent<Image>().color = Color.white;
+            GetComponent<Image>().color = Color.black;
         }
         else
         {
-            GetComponent<Image>().color = Color.black;
+            GetComponent<Image>().color = new Color(0,0,0,0);
         }
     }
 }
