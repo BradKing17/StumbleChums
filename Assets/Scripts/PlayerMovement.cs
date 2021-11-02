@@ -15,8 +15,8 @@ public class PlayerMovement : MonoBehaviour
 
     public bool isTopDown = false;
     
-    private Rigidbody rb;
-    private CapsuleCollider cc;
+    public Rigidbody rb;
+    public CapsuleCollider cc;
     private SpriteRenderer spriteRenderer;
     public SphereCollider grabRange;
     public List<Collider> grabbables;
@@ -39,8 +39,6 @@ public class PlayerMovement : MonoBehaviour
     private void OnEnable()
     {
         spriteRenderer = GetComponentInChildren<SpriteRenderer>();
-        rb = GetComponent<Rigidbody>();
-        cc = GetComponent<CapsuleCollider>();
         
         // So if it is top down the PosZ constraint is unfrozen
         if (isTopDown)

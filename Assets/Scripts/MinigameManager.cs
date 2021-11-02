@@ -8,6 +8,8 @@ using UnityEngine.UI;
 
 public class MinigameManager : MonoBehaviour
 {
+    public GameManager gameManagerPrefab;
+    
     [Header("Gamemode Settings")] 
     public bool topDown = false;
     public int numLives = 1;
@@ -25,7 +27,16 @@ public class MinigameManager : MonoBehaviour
     
     void Start()
     {
-        gameManager = GameObject.FindGameObjectWithTag("Game Manager").GetComponent<GameManager>();
+        var gameManagerObj = GameObject.FindGameObjectWithTag("Game Manager");
+        if (gameManager == null)
+        {
+            gameManager = Instantiate(gameManagerPrefab);
+        }
+        else
+        {
+            gameManager = gameManagerObj.GetComponent<GameManager>();
+        }
+        
         players = gameManager.GetPlayers();
         if (topDown)
         {
@@ -81,12 +92,12 @@ public class MinigameManager : MonoBehaviour
 
     private void NextGame()
     {
-        foreach (PlayerManager player in players)
+        /*foreach (PlayerManager player in players)
         {
             player.DespawnPlayer();
         }
         SceneManager.LoadScene(gameManager.sceneQueue.First());
-        gameManager.sceneQueue.RemoveAt(0);
+        gameManager.sceneQueue.RemoveAt(0);*/
     }
 
     private void OnDrawGizmosSelected()

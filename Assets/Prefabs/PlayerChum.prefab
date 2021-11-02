@@ -392,6 +392,8 @@ MonoBehaviour:
   airSpeed: 0.5
   jumpStrength: 6
   isTopDown: 0
+  rb: {fileID: 979622404902493729}
+  cc: {fileID: 6315713637674711079}
   grabRange: {fileID: 4564606654175380070}
   grabbables: []
   joint: {fileID: 5667405560616474160}
@@ -400,6 +402,7 @@ MonoBehaviour:
   groundLayer:
     serializedVersion: 2
     m_Bits: 64
+  getUpTimer: 0
 --- !u!136 &6315713637674711079
 CapsuleCollider:
   m_ObjectHideFlags: 0
