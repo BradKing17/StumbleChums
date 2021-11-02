@@ -37,6 +37,8 @@ public class PlayerMovement : MonoBehaviour
     private RigidbodyConstraints unfreezeZConstraint;
     public LayerMask groundLayer;
     public float getUpTimer = 0;
+
+    private bool lastRaycastHit = false;
     
     
     private void OnEnable()
@@ -112,6 +114,25 @@ public class PlayerMovement : MonoBehaviour
                 EndRagdoll();
             }
         }
+        CheckPoints();
+    }
+
+    private void CheckPoints()
+    {
+        RaycastHit hit;
+        if (Physics.Raycast(transform.position, Vector3.down, out hit, Mathf.Infinity ) &&
+            hit.transform.CompareTag("ragdoll"))
+        {
+            if (!lastRaycastHit)
+            {
+                playerManager.score++;
+            }
+            lastRaycastHit = true;
+        }
+        else
+        {
+            lastRaycastHit = false;
+        }
     }
 
     private bool IsGrounded()
@@ -172,11 +193,11 @@ public class PlayerMovement : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            if (this.gameObject != other.gameObject)
+            if (gameObject != other.gameObject)
             {
                 grabbables.Remove(other);
             }
-        };
+        }
     }
 
     private void OnCollisionEnter(Collision other)

@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 public class MinigameManager : MonoBehaviour
@@ -20,7 +21,7 @@ public class MinigameManager : MonoBehaviour
     [Header("Setup")]
     public Transform cameraManager;
     public Text timeText;
-    public List<Text> livesTexts;
+    [FormerlySerializedAs("livesTexts")] public List<Text> scoreTexts;
     
     private GameManager gameManager;
     private List<PlayerManager> players;
@@ -48,7 +49,6 @@ public class MinigameManager : MonoBehaviour
         foreach (PlayerManager player in players)
         {
             player.SpawnPlayer(spawnPoints[i]);
-            player.score += numLives;
             player.lives = numLives;
             i++;
         }
@@ -63,7 +63,7 @@ public class MinigameManager : MonoBehaviour
             if (player.movement.transform.position.y < levelKillY)
             {
                 audioSource.PlayOneShot(playerDeathSound);
-                if (player.lives > 1)
+                if (/*player.lives > 1*/true)
                 {
                     player.movement.transform.position = spawnPoints[i % spawnPoints.Count];
                 }
@@ -72,16 +72,16 @@ public class MinigameManager : MonoBehaviour
                     player.DespawnPlayer();
                 }
                 player.score--;
-                player.lives--;
+                //player.lives--;
             }
 
-            if (player.lives <= 0)
+            /*if (player.lives <= 0)
             {
                 numPlayers--;
-            }
+            }*/
 
-            livesTexts[i].text = player.lives.ToString();
-            livesTexts[i].color = player.type.color;
+            scoreTexts[i].text = player.score.ToString();
+            scoreTexts[i].color = player.type.color;
             i++;
         }
         gameTime -= Time.deltaTime;

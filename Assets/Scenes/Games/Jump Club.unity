@@ -134,7 +134,7 @@ GameObject:
   - component: {fileID: 295280180}
   - component: {fileID: 295280179}
   - component: {fileID: 295280178}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Spinner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -479,7 +479,7 @@ MonoBehaviour:
   - {x: 3, y: 0, z: 0}
   cameraManager: {fileID: 590491074}
   timeText: {fileID: 1072847875}
-  livesTexts:
+  scoreTexts:
   - {fileID: 1363535249}
   - {fileID: 1523297838}
   - {fileID: 771799115}
@@ -496,7 +496,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 429fc72f1f54d5c40a957acf928ffa3f, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
@@ -593,7 +593,6 @@ GameObject:
   - component: {fileID: 665737366}
   - component: {fileID: 665737365}
   - component: {fileID: 665737364}
-  - component: {fileID: 665737363}
   m_Layer: 6
   m_Name: Cube
   m_TagString: Untagged
@@ -601,19 +600,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!65 &665737363
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 665737362}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &665737364
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -770,7 +756,7 @@ GameObject:
   - component: {fileID: 841846539}
   - component: {fileID: 841846538}
   - component: {fileID: 841846537}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Bottom Spinner
   m_TagString: ragdoll
   m_Icon: {fileID: 0}
@@ -802,8 +788,8 @@ MonoBehaviour:
       inWeight: 0
       outWeight: 0.33333334
     - serializedVersion: 3
-      time: 30
-      value: 1.5
+      time: 60
+      value: 3
       inSlope: 0.05
       outSlope: 0.05
       tangentMode: 34
@@ -868,7 +854,7 @@ Transform:
   m_GameObject: {fileID: 841846536}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: -0.20500001, z: 0}
-  m_LocalScale: {x: 12.5, y: 0.1, z: 0.625}
+  m_LocalScale: {x: 12.5, y: 0.1, z: 0.3}
   m_Children:
   - {fileID: 1795480364}
   - {fileID: 1593625925}
@@ -1223,7 +1209,7 @@ GameObject:
   - component: {fileID: 1427329406}
   - component: {fileID: 1427329405}
   - component: {fileID: 1427329404}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Top Spinner
   m_TagString: ragdoll
   m_Icon: {fileID: 0}
@@ -1248,17 +1234,17 @@ MonoBehaviour:
     - serializedVersion: 3
       time: 15
       value: 0
-      inSlope: 0.055555556
-      outSlope: 0.055555556
+      inSlope: 0.016666668
+      outSlope: 0.016666668
       tangentMode: 34
       weightedMode: 0
       inWeight: 0
       outWeight: 0.33333334
     - serializedVersion: 3
       time: 60
-      value: 2.5
-      inSlope: 0.055555556
-      outSlope: 0.055555556
+      value: 0.75
+      inSlope: 0.016666668
+      outSlope: 0.016666668
       tangentMode: 34
       weightedMode: 0
       inWeight: 0.33333334
@@ -1321,7 +1307,7 @@ Transform:
   m_GameObject: {fileID: 1427329403}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0.5, z: 0}
-  m_LocalScale: {x: 12.5, y: 0.25, z: 0.625}
+  m_LocalScale: {x: 12.5, y: 0.25, z: 0.3}
   m_Children:
   - {fileID: 1962709311}
   - {fileID: 1805863158}
@@ -1419,7 +1405,7 @@ GameObject:
   - component: {fileID: 1593625924}
   - component: {fileID: 1593625922}
   - component: {fileID: 1593625923}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Right
   m_TagString: ragdoll
   m_Icon: {fileID: 0}
@@ -1594,7 +1580,7 @@ Transform:
   m_GameObject: {fileID: 1762801083}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.0833334, y: 1, z: 0.98}
+  m_LocalScale: {x: 1.0833334, y: 0.99, z: 0.98}
   m_Children: []
   m_Father: {fileID: 665737366}
   m_RootOrder: 0
@@ -1611,7 +1597,7 @@ GameObject:
   - component: {fileID: 1795480363}
   - component: {fileID: 1795480361}
   - component: {fileID: 1795480362}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Left
   m_TagString: ragdoll
   m_Icon: {fileID: 0}
@@ -1707,7 +1693,7 @@ GameObject:
   - component: {fileID: 1805863157}
   - component: {fileID: 1805863155}
   - component: {fileID: 1805863156}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Right
   m_TagString: ragdoll
   m_Icon: {fileID: 0}
@@ -1803,7 +1789,7 @@ GameObject:
   - component: {fileID: 1962709310}
   - component: {fileID: 1962709308}
   - component: {fileID: 1962709309}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Left
   m_TagString: ragdoll
   m_Icon: {fileID: 0}

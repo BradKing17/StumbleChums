@@ -8,7 +8,7 @@ public class PlayerManager : MonoBehaviour
     public int score = 0;
     public int lives = 3;
     public PlayerType type;
-
+    
     public void SpawnPlayer(Vector3 spawnPoint)
     {
         movement.transform.position = spawnPoint;
