@@ -6,6 +6,7 @@ TagManager:
   tags:
   - ragdoll
   - Game Manager
+  - Scene Manager
   layers:
   - Default
   - TransparentFX

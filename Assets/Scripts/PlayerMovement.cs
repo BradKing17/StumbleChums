@@ -3,26 +3,24 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.Serialization;
 
 public class PlayerMovement : MonoBehaviour
 {
-    public PlayerType playerType;
+    public PlayerManager playerManager;
     
-    
-    public float moveSpeed = 10.0F;
-    public float airSpeed = 5.0F;
+    public float moveSpeed = 1.0F;
+    public float airSpeed = 0.5F;
     public float jumpStrength = 1.0F;
 
-    public bool GMisTopDown;
-    //public bool isTopDown = false;
+    public bool isTopDown = false;
     
-    public Rigidbody rb;
-    public CapsuleCollider cc;
-    public SpriteRenderer spr;
+    private Rigidbody rb;
+    private CapsuleCollider cc;
+    private SpriteRenderer spriteRenderer;
     public SphereCollider grabRange;
     public List<Collider> grabbables;
     public SpringJoint joint;
-    public CapsuleCollider triggerCapsuleCollider;
 
     private Vector2 moveInput;
     private float grabInput;
@@ -30,7 +28,6 @@ public class PlayerMovement : MonoBehaviour
     private bool canDive = true;
     private bool canGrab = true;
     public bool ragdoll = false;
-    public SpriteRenderer spriteRenderer;
     private bool ragdollFlashing;
 
     private RigidbodyConstraints standardContraint;
@@ -40,12 +37,12 @@ public class PlayerMovement : MonoBehaviour
     
     private void OnEnable()
     {
-        // This will check if the GAME MANAGER object says whether the scene is Top Down
-        GMisTopDown = GameObject.FindWithTag("Game Manager").GetComponent<GameManager>().topDown;
-        spriteRenderer = gameObject.GetComponentInChildren<SpriteRenderer>();
+        spriteRenderer = GetComponentInChildren<SpriteRenderer>();
+        rb = GetComponent<Rigidbody>();
+        cc = GetComponent<CapsuleCollider>();
         
         // So if it is top down the PosZ constraint is unfrozen
-        if (GMisTopDown)
+        if (isTopDown)
         {
             Debug.Log("Ding");
             
@@ -71,7 +68,7 @@ public class PlayerMovement : MonoBehaviour
         grounded = IsGrounded();
         // Horizontal
         rb.AddForce(transform.right * (moveInput.x * (grounded ? moveSpeed : airSpeed)), ForceMode.Acceleration);
-        if (GMisTopDown)
+        if (isTopDown)
         {
             rb.AddForce(transform.forward * (moveInput.y * (grounded ? moveSpeed : airSpeed)), ForceMode.Acceleration);
         }
@@ -86,19 +83,19 @@ public class PlayerMovement : MonoBehaviour
             joint.spring = 0;
         }
 
-        spr.sprite = playerType.sprites.front;
+        spriteRenderer.sprite = playerManager.type.sprites.front;
         Vector3 vel = rb.velocity;
         if(vel.x >= -vel.z && vel.x >= 0.5F)
         {
-            spr.sprite = playerType.sprites.right;
+            spriteRenderer.sprite = playerManager.type.sprites.right;
         }
         else if (vel.x <=vel.z && vel.x <= -0.5)
         {
-            spr.sprite = playerType.sprites.left;
+            spriteRenderer.sprite = playerManager.type.sprites.left;
         }
         if (vel.z >= vel.x && vel.z >= 0.5F)
         {
-            spr.sprite = playerType.sprites.back;
+            spriteRenderer.sprite = playerManager.type.sprites.back;
         }
 
         if (ragdoll && grounded)
@@ -113,24 +110,6 @@ public class PlayerMovement : MonoBehaviour
         return Physics.Raycast(transform.position, Vector3.down, cc.height / 2.0F + 0.05F, groundLayer);
     }
 
-    public void SetPlayerType(PlayerType _type)
-    {
-        playerType = _type;
-        spr.sprite = _type.sprites.front;
-    }
-
-    public void SetTopDown(bool _topDown)
-    {
-        GMisTopDown = _topDown;
-        rb.constraints = GMisTopDown ? 
-            RigidbodyConstraints.FreezeRotation:
-            RigidbodyConstraints.FreezeRotation | RigidbodyConstraints.FreezePositionZ ;
-        if (_topDown)
-        {
-            spr.transform.Rotate(new Vector3(90, 0, 0));
-        }
-    }
-
     public void Move(InputAction.CallbackContext _value)
     {
         moveInput = _value.ReadValue<Vector2>();
@@ -138,7 +117,7 @@ public class PlayerMovement : MonoBehaviour
 
     public void Jump(InputAction.CallbackContext _value)
     {
-        if (!GMisTopDown && _value.phase == InputActionPhase.Started && IsGrounded())
+        if (!isTopDown && _value.phase == InputActionPhase.Started && IsGrounded())
         {
             canDive = true;
             rb.AddForce(Vector2.up * jumpStrength, ForceMode.VelocityChange);
