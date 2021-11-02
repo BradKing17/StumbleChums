@@ -22,7 +22,8 @@ public class MinigameManager : MonoBehaviour
     
     private GameManager gameManager;
     private List<PlayerManager> players;
-    
+    public AudioClip playerDeathSound;
+    public AudioSource audioSource;
     void Start()
     {
         gameManager = GameObject.FindGameObjectWithTag("Game Manager").GetComponent<GameManager>();
@@ -50,6 +51,7 @@ public class MinigameManager : MonoBehaviour
         {
             if (player.movement.transform.position.y < levelKillY)
             {
+                audioSource.PlayOneShot(playerDeathSound);
                 if (player.lives > 1)
                 {
                     player.movement.transform.position = spawnPoints[i % spawnPoints.Count];
