@@ -29,6 +29,9 @@ public class PlayerMovement : MonoBehaviour
     private bool canGrab = true;
     public bool ragdoll = false;
     private bool ragdollFlashing;
+    public AudioSource audioSource;
+    public AudioClip playerGrabSound;
+    public AudioClip playerJumpSound;
 
     private RigidbodyConstraints standardContraint;
     private RigidbodyConstraints unfreezeZConstraint;
@@ -133,6 +136,7 @@ public class PlayerMovement : MonoBehaviour
     {
         if (!isTopDown && _value.phase == InputActionPhase.Started && IsGrounded() && !ragdoll)
         {
+            audioSource.PlayOneShot(playerJumpSound);
             canDive = true;
             rb.AddForce(Vector2.up * jumpStrength, ForceMode.VelocityChange);
         }
@@ -142,6 +146,7 @@ public class PlayerMovement : MonoBehaviour
     {
        if(!grounded && canDive && !ragdoll) 
        {
+           audioSource.PlayOneShot(playerGrabSound);
             canDive = false;
             rb.AddForce(Vector2.right * rb.velocity.x * (jumpStrength/2), ForceMode.VelocityChange);
        }
