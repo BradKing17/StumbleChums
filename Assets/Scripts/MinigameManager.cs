@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -84,7 +85,8 @@ public class MinigameManager : MonoBehaviour
         {
             player.DespawnPlayer();
         }
-        SceneManager.LoadScene(gameManager.sceneQueue.Dequeue());
+        SceneManager.LoadScene(gameManager.sceneQueue.First());
+        gameManager.sceneQueue.RemoveAt(0);
     }
 
     private void OnDrawGizmosSelected()

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -27,7 +28,7 @@ public class ScoreSceneManager : MonoBehaviour
         timer += Time.deltaTime;
         for (int i = 0; i < players.Count; i++)
         {
-            if (players[i].score >= timer * 2.0F)
+            if (timer * 2.0F - 1.0F >= players[i].score)
             {
                 scores[i].text = players[i].score.ToString();
             }
@@ -35,7 +36,8 @@ public class ScoreSceneManager : MonoBehaviour
 
         if (timer > 5.0F)
         {
-            SceneManager.LoadScene(gameManager.sceneQueue.Dequeue());
+            SceneManager.LoadScene(gameManager.sceneQueue.First());
+            gameManager.sceneQueue.RemoveAt(0);
         }
     }
 }

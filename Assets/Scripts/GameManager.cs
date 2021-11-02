@@ -30,7 +30,7 @@ public class GameManager : MonoBehaviour
     [Header("Manager Settings")] 
     public Transform chumParent;
 
-    public Queue<int> sceneQueue;
+    public List<int> sceneQueue;
     
     // Start is called before the first frame update
     private void Start()

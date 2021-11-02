@@ -43,7 +43,7 @@ GameObject:
   - component: {fileID: 2645920886185182298}
   m_Layer: 0
   m_Name: GAME MANAGER
-  m_TagString: Untagged
+  m_TagString: Game Manager
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -75,10 +75,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 790ce0263020c6041b2e909ef32d4bae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  topDown: 0
-  doPlayersRespawn: 1
-  levelKillY: -6
-  playerPrefab: {fileID: 1565173895855508757, guid: 40d3710132ef3d54a8e1262725ed605e, type: 3}
+  playerPrefab: {fileID: 5175098638902088967, guid: 40d3710132ef3d54a8e1262725ed605e, type: 3}
   playerTypes:
   - name: Blue
     sprites:
@@ -86,38 +83,43 @@ MonoBehaviour:
       left: {fileID: 8374357588622737261, guid: 5b0cac55a0f33144695d9158d1038d07, type: 3}
       right: {fileID: 6772786639270117421, guid: 5b0cac55a0f33144695d9158d1038d07, type: 3}
       back: {fileID: 2561007109530550212, guid: 5b0cac55a0f33144695d9158d1038d07, type: 3}
+    color: {r: 0.21960786, g: 0.2509804, b: 0.6901961, a: 1}
   - name: Green
     sprites:
       front: {fileID: -6163474906119744729, guid: c63c9068b3bcf8a43bda0ab7d59892ed, type: 3}
       left: {fileID: -4403005621968335013, guid: c63c9068b3bcf8a43bda0ab7d59892ed, type: 3}
       right: {fileID: -5353468298694141271, guid: c63c9068b3bcf8a43bda0ab7d59892ed, type: 3}
       back: {fileID: -759950718104783649, guid: c63c9068b3bcf8a43bda0ab7d59892ed, type: 3}
+    color: {r: 0.3137255, g: 0.48627454, b: 0.21960786, a: 1}
   - name: Orange
     sprites:
       front: {fileID: 9176274337627413358, guid: afeb2b1611f3cae46bfccbf50f615c97, type: 3}
       left: {fileID: 7210782631165345484, guid: afeb2b1611f3cae46bfccbf50f615c97, type: 3}
       right: {fileID: 8443295682339117362, guid: afeb2b1611f3cae46bfccbf50f615c97, type: 3}
       back: {fileID: 798746670926346259, guid: afeb2b1611f3cae46bfccbf50f615c97, type: 3}
+    color: {r: 0.6745098, g: 0.47058827, b: 0.23529413, a: 1}
   - name: Pink
     sprites:
       front: {fileID: 5326421836943786410, guid: 4d567c70d297513499fc78ca0345b0c9, type: 3}
       left: {fileID: -5561951857926660387, guid: 4d567c70d297513499fc78ca0345b0c9, type: 3}
       right: {fileID: -1075532378563573226, guid: 4d567c70d297513499fc78ca0345b0c9, type: 3}
       back: {fileID: -7380454956398144485, guid: 4d567c70d297513499fc78ca0345b0c9, type: 3}
+    color: {r: 0.627451, g: 0.23529413, b: 0.53333336, a: 1}
   - name: Red
     sprites:
       front: {fileID: 5553007276299808931, guid: acb566a03de1637438a08ff40ab2dc7e, type: 3}
       left: {fileID: -8311376593458634864, guid: acb566a03de1637438a08ff40ab2dc7e, type: 3}
       right: {fileID: -3576952036768828836, guid: acb566a03de1637438a08ff40ab2dc7e, type: 3}
       back: {fileID: -7246983263739918805, guid: acb566a03de1637438a08ff40ab2dc7e, type: 3}
+    color: {r: 0.6901961, g: 0.23529413, b: 0.23529413, a: 1}
   - name: Yellow
     sprites:
       front: {fileID: -6768843343377455482, guid: e61372ab76cb1a240acb4dd805e28001, type: 3}
       left: {fileID: 4292172276311073069, guid: e61372ab76cb1a240acb4dd805e28001, type: 3}
       right: {fileID: 1953624256632946623, guid: e61372ab76cb1a240acb4dd805e28001, type: 3}
       back: {fileID: -8962693777315227097, guid: e61372ab76cb1a240acb4dd805e28001, type: 3}
+    color: {r: 0.81568635, g: 0.81568635, b: 0.3137255, a: 1}
   chumParent: {fileID: 2645920884487429612}
-  cameraManager: {fileID: 0}
 --- !u!114 &2645920886185182298
 MonoBehaviour:
   m_ObjectHideFlags: 0

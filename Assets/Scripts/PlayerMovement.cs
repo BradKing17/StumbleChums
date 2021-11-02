@@ -33,6 +33,7 @@ public class PlayerMovement : MonoBehaviour
     private RigidbodyConstraints standardContraint;
     private RigidbodyConstraints unfreezeZConstraint;
     public LayerMask groundLayer;
+    public float getUpTimer = 0;
     
     
     private void OnEnable()
@@ -100,7 +101,15 @@ public class PlayerMovement : MonoBehaviour
 
         if (ragdoll && grounded)
         {
-            StartCoroutine(RagdollCatch());
+            if (getUpTimer < 1F)
+            {
+                getUpTimer += Time.deltaTime % 60;
+            }
+            else
+            {
+                getUpTimer = 0;
+                EndRagdoll();
+            }
         }
     }
 
@@ -112,12 +121,19 @@ public class PlayerMovement : MonoBehaviour
 
     public void Move(InputAction.CallbackContext _value)
     {
-        moveInput = _value.ReadValue<Vector2>();
+        if (!ragdoll)
+        {
+            moveInput = _value.ReadValue<Vector2>();
+        }
+        else
+        {
+            moveInput = _value.ReadValue<Vector2>()/8;
+        }
     }
 
     public void Jump(InputAction.CallbackContext _value)
     {
-        if (!isTopDown && _value.phase == InputActionPhase.Started && IsGrounded())
+        if (!isTopDown && _value.phase == InputActionPhase.Started && IsGrounded() && !ragdoll)
         {
             canDive = true;
             rb.AddForce(Vector2.up * jumpStrength, ForceMode.VelocityChange);
@@ -126,7 +142,7 @@ public class PlayerMovement : MonoBehaviour
 
     public void Grab(InputAction.CallbackContext _value)
     {
-       if(!grounded && canDive) 
+       if(!grounded && canDive && !ragdoll) 
        {
             canDive = false;
             rb.AddForce(Vector2.right * rb.velocity.x * (jumpStrength/2), ForceMode.VelocityChange);
@@ -165,20 +181,30 @@ public class PlayerMovement : MonoBehaviour
         //print("ding");
         if (other.gameObject.CompareTag("ragdoll"))
         {
-            StartCoroutine(StartRagdoll());
+            getUpTimer = 0;
+            StartRagdoll();
         }
     }
+
+    private void OnCollisionStay(Collision other)
+    {
+        if (other.gameObject.CompareTag("ragdoll"))
+        {
+            getUpTimer = 0;
+        }
+    }
+    
+
     private void OnCollisionExit(Collision other)
     {
         if (other.gameObject.CompareTag("ragdoll") && grounded)
         {
-            StartCoroutine(EndRagdoll());
+            getUpTimer = 0;
         }
     }
 
-    IEnumerator EndRagdoll()
+    void EndRagdoll()
     {
-        yield return new WaitForSeconds(.6F);
         rb.AddForce(transform.up, ForceMode.Force);
         gameObject.transform.rotation = new Quaternion(0, 0, 0,0);
         rb.constraints = standardContraint;
@@ -186,19 +212,11 @@ public class PlayerMovement : MonoBehaviour
         ragdoll = false;
     }
 
-    IEnumerator StartRagdoll()
+    void StartRagdoll()
     {
         ragdoll = true;
         spriteRenderer.color = Color.red;
         rb.constraints = unfreezeZConstraint;
-        yield return new WaitForSeconds(.1F);
     }
 
-    // This should(?) catch whether the chum is on the ground and ragdolling, but not
-    // getting back up
-    IEnumerator RagdollCatch()
-    {
-        yield return new WaitForSeconds(.3F);
-        StartCoroutine(RagdollCatch());
-    }
 }
