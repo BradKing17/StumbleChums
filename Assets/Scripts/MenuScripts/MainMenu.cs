@@ -9,7 +9,7 @@ public class MainMenu : MonoBehaviour
   public void PlayGame()
   {
         GameManager gameManager = GameObject.FindGameObjectWithTag("Game Manager").GetComponent<GameManager>();
-        SceneManager.LoadScene(gameManager.sceneQueue.First());
+        SceneManager.LoadScene(1);
         gameManager.sceneQueue.RemoveAt(0);
         
     }

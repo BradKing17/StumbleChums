@@ -1433,18 +1433,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: GAME MANAGER
       objectReference: {fileID: 0}
-    - target: {fileID: 2645920886185182296, guid: 46e78a5ed9749a940800d8ddb7603e48, type: 3}
-      propertyPath: sceneQueue.Array.size
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 2645920886185182296, guid: 46e78a5ed9749a940800d8ddb7603e48, type: 3}
-      propertyPath: sceneQueue.Array.data[0]
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2645920886185182296, guid: 46e78a5ed9749a940800d8ddb7603e48, type: 3}
-      propertyPath: sceneQueue.Array.data[1]
-      value: 2
-      objectReference: {fileID: 0}
     - target: {fileID: 2645920886185182297, guid: 46e78a5ed9749a940800d8ddb7603e48, type: 3}
       propertyPath: m_RootOrder
       value: 3

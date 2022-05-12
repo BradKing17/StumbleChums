@@ -69,13 +69,6 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
-        grounded = IsGrounded();
-        // Horizontal
-        rb.AddForce(transform.right * (moveInput.x * (grounded ? moveSpeed : airSpeed)), ForceMode.Acceleration);
-        if (isTopDown)
-        {
-            rb.AddForce(transform.forward * (moveInput.y * (grounded ? moveSpeed : airSpeed)), ForceMode.Acceleration);
-        }
         //Debug.Log(grabInput);
         if(grabInput > 0)
         {
@@ -102,11 +95,11 @@ public class PlayerMovement : MonoBehaviour
             spriteRenderer.sprite = playerManager.type.sprites.back;
         }
 
-        if (ragdoll && grounded)
+        if (ragdoll)
         {
-            if (getUpTimer < 1F)
+            if (getUpTimer < 0.5F)
             {
-                getUpTimer += Time.deltaTime % 60;
+                getUpTimer += Time.deltaTime;
             }
             else
             {
@@ -115,6 +108,17 @@ public class PlayerMovement : MonoBehaviour
             }
         }
         CheckPoints();
+    }
+
+    private void FixedUpdate()
+    {
+        grounded = IsGrounded();
+        // Horizontal
+        rb.AddForce(transform.right * (moveInput.x * (grounded ? moveSpeed : airSpeed)), ForceMode.Acceleration);
+        if (isTopDown)
+        {
+            rb.AddForce(transform.forward * (moveInput.y * (grounded ? moveSpeed : airSpeed)), ForceMode.Acceleration);
+        }
     }
 
     private void CheckPoints()
@@ -137,8 +141,8 @@ public class PlayerMovement : MonoBehaviour
 
     private bool IsGrounded()
     {
-        Debug.DrawRay(transform.position, Vector3.down * (cc.height / 2.0F + 0.05F), Color.green);
-        return Physics.Raycast(transform.position, Vector3.down, cc.height / 2.0F + 0.05F, groundLayer);
+        //Debug.DrawRay(transform.position, Vector3.down * (cc.height / 2.0F + 0.05F), Color.green);
+        return Physics.Raycast(transform.position, Vector3.down, cc.height / 2.0F + 0.05F/*, groundLayer*/);
     }
 
     public void Move(InputAction.CallbackContext _value)
@@ -210,7 +214,7 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    private void OnCollisionStay(Collision other)
+    /*private void OnCollisionStay(Collision other)
     {
         if (other.gameObject.CompareTag("ragdoll"))
         {
@@ -225,7 +229,7 @@ public class PlayerMovement : MonoBehaviour
         {
             getUpTimer = 0;
         }
-    }
+    }*/
 
     void EndRagdoll()
     {

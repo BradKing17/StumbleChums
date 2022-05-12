@@ -395,9 +395,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scores:
   - {fileID: 158924556}
+  - {fileID: 1498769881}
   - {fileID: 1301171118}
   - {fileID: 936666861}
-  - {fileID: 1498769881}
 --- !u!1 &654558170
 GameObject:
   m_ObjectHideFlags: 0

@@ -28,7 +28,7 @@ public class ScoreSceneManager : MonoBehaviour
         timer += Time.deltaTime;
         for (int i = 0; i < players.Count; i++)
         {
-            if (timer * 2.0F - 1.0F >= players[i].score)
+            if (timer * 10.0F - 1.0F >= players[i].score)
             {
                 scores[i].text = players[i].score.ToString();
             }
@@ -36,8 +36,11 @@ public class ScoreSceneManager : MonoBehaviour
 
         if (timer > 5.0F)
         {
-            SceneManager.LoadScene(gameManager.sceneQueue.First());
-            gameManager.sceneQueue.RemoveAt(0);
+            foreach (PlayerManager player in players)
+            {
+                player.score = 0;
+            }
+            SceneManager.LoadScene(1);
         }
     }
 }

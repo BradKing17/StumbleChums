@@ -30,7 +30,7 @@ public class MinigameManager : MonoBehaviour
     void Start()
     {
         var gameManagerObj = GameObject.FindGameObjectWithTag("Game Manager");
-        if (gameManager == null)
+        if (gameManagerObj == null)
         {
             gameManager = Instantiate(gameManagerPrefab);
         }
@@ -71,7 +71,7 @@ public class MinigameManager : MonoBehaviour
                 {
                     player.DespawnPlayer();
                 }
-                player.score--;
+                //player.score--;
                 //player.lives--;
             }
 
@@ -86,7 +86,7 @@ public class MinigameManager : MonoBehaviour
         }
         gameTime -= Time.deltaTime;
         timeText.text = gameTime.ToString("F0");
-        if (gameTime <= 0.0F || numPlayers <= 0)
+        if (gameTime <= 0.0F)
         {
             NextGame();
         }
@@ -94,12 +94,11 @@ public class MinigameManager : MonoBehaviour
 
     private void NextGame()
     {
-        /*foreach (PlayerManager player in players)
+        foreach (PlayerManager player in players)
         {
             player.DespawnPlayer();
         }
-        SceneManager.LoadScene(gameManager.sceneQueue.First());
-        gameManager.sceneQueue.RemoveAt(0);*/
+        SceneManager.LoadScene(2);
     }
 
     private void OnDrawGizmosSelected()

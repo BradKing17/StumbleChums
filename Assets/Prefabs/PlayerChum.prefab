@@ -389,8 +389,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerManager: {fileID: 5175098638902088967}
-  moveSpeed: 1
-  airSpeed: 0.5
+  moveSpeed: 12
+  airSpeed: 5
   jumpStrength: 6
   isTopDown: 0
   rb: {fileID: 979622404902493729}
